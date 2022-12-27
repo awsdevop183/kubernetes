@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: httpd-frontend
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: myapp
+      name: httpd-frontend
   template:
     metadata:
       labels:
-        app: myapp
+        name: httpd-frontend
     spec:
       containers:
-      - name: myapp
-        image: nginx
+        - name: httpd-container
+          image: httpd:2.4-alpine
