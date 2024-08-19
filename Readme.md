@@ -14,4 +14,4 @@ for instance pod-name: mysql-0, mysql-1 etc
 
 # Nginx Ingress controller for AWS internet-facing #
 
-``` kubectl apply -f 
+``` kubectl apply -f https://raw.githubusercontent.com/awsdevop183/kubernetes/main/nginx-ingress-controller-public.yml.yml ```
