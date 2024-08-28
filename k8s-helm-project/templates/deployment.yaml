@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: "2024-08-27T11:37:28Z"
+  generation: 1
+  labels:
+    app: helm-deploy
+  name: helm-deploy
+  namespace: default
+  resourceVersion: "3898390"
+  uid: a2b16e89-d477-4a63-bb31-efd95c342bbe
+spec:
+  progressDeadlineSeconds: 600
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: helm-deploy
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: helm-deploy
+    spec:
+      containers:
+      - image: awsdevops183/httpd
+        imagePullPolicy: Always
+        name: httpd
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}
